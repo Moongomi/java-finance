@@ -1,17 +1,16 @@
-package com.example.javafinance.telegram;
+package com.example.javafinance.config;
 
-import com.example.javafinance.check.Price;
-import com.example.javafinance.check.YahooApi;
-import com.pengrad.telegrambot.TelegramBot;
-import com.pengrad.telegrambot.model.Message;
-import com.pengrad.telegrambot.model.request.ParseMode;
-import com.pengrad.telegrambot.request.SendMessage;
-import com.pengrad.telegrambot.response.SendResponse;
+import com.github.kshashov.telegram.api.TelegramMvcController;
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 
-import java.io.IOException;
-import java.math.BigDecimal;
+//import com.github.kshashov.telegram.*;
 
-public class Bot {
+
+@Data
+public class Bot implements TelegramMvcController {
+
+    /*
     public static void main(String[] args) throws IOException {
 
         YahooApi api = new YahooApi();
@@ -32,5 +31,33 @@ public class Bot {
         Message message = sendResponse.message();
 
     }
+*/
+
+    @Value("${bot.token}")
+    private String token;
+
+    @Override
+    public String getToken() {
+        return token;
+    }
+
+    /*
+    public static void main(String[] args) throws IOException {
+        YahooApi api = new YahooApi();
+
+        BigDecimal test = api.yahooPrice();
+
+
+
+
+
+
+
+
+    }
+
+     */
+
+
 
 }
