@@ -7,24 +7,9 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 public class YahooApi {
-    //Price current_price
-
-    public BigDecimal yahooPrice() throws IOException {
+    public String yahooPrice() throws IOException {
         Stock stock = YahooFinance.get("KRW=X");
-
-        BigDecimal price = stock.getQuote().getPrice();
-        //current_price.setCurrent_price(price);
-        //System.out.println(current_price.getCurrent_price());
-        return price;
+        BigDecimal price = stock.getQuote(true).getPrice();
+        return price.toString();
     }
-
-/*
-    public static void main(String[] args) throws IOException {
-        Stock stock = YahooFinance.get("KRW=X");
-        BigDecimal price = stock.getQuote().getPrice();
-        System.out.println(price);
-    }
-    */
-
-
 }
